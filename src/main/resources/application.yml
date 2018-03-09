@@ -1,0 +1,21 @@
+server:
+  tomcat:
+    accesslog:
+      enabled: true
+logging:
+  level:
+    org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor: debug 
+    org.springframework.web: info
+    org.springframework.beans: info 
+    org.springframework.core: info
+    org.apache.coyote.http11.Http11InputBuffer: debug
+    org.apache.coyote.http11: info
+    org.apache.coyote: info
+    org.apache.catalina.loader.WebappClassLoaderBase: info 
+    org.apache.tomcat.util.net: debug
+    org.apache.tomcat.util.modeler: info 
+    org.apache.tomcat.util.digester: info 
+    org.apache.tomcat.util.net.NioEndpoint: info
+    javax.management: info
+    sun.rmi: info
+    ROOT: info
