@@ -4,6 +4,7 @@ server:
       enabled: true
 logging:
   level:
+    com.ablecoms.deepfree: DEBUG
     org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor: debug 
     org.springframework.web: info
     org.springframework.beans: info 

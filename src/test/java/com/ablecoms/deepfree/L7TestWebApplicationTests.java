@@ -28,27 +28,30 @@ public class L7TestWebApplicationTests {
 	@Test
 	public void testApiList() {
 		ImmutableSet<String> apis = ImmutableSet.of(
-				"200",
-				"201",
-				"400",
-				"401",
-				"403",
-				"404",
-				"409",
-				"500",
-				"503");
+				"test200",
+				"test201",
+				"test400",
+				"test401",
+				"test403",
+				"test404",
+				"test409",
+				"test500",
+				"test503",
+				"close200",
+				"close200Direct");
 		apis.forEach(api->callApi(api));		
 	}
 
 	private void callApi(String api) {
 		try {
-			logger.debug("[{} TEST]===================", api);
+			logger.debug("[{} TEST]=================================================", api);
 			RestTemplate rest = new RestTemplate(getClientHttpRequestFactory());
-			String response = rest.getForObject("http://localhost:8080/test"+api, String.class);
-			//logger.debug(response);
+			String response = rest.getForObject("http://localhost:8080/"+api, String.class);
+			logger.trace(response);
 		} catch (Exception e) {
 			logger.warn("{}: {}", e.getClass().getCanonicalName(), e.getMessage());
 		}
+		logger.debug("");
 	}
 
 }

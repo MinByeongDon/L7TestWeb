@@ -27,15 +27,21 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 			<exclusions>
 				<!-- Exclude the Tomcat dependency -->
-<!-- 				<exclusion> -->
-<!-- 					<groupId>org.springframework.boot</groupId> -->
-<!-- 					<artifactId>spring-boot-starter-tomcat</artifactId> -->
-<!-- 				</exclusion> -->
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
 			</exclusions>
 		</dependency>
+		<!-- Use Other Tomcat Version -->
 <!-- 		<dependency> -->
 <!-- 			<groupId>org.apache.tomcat.embed</groupId> -->
 <!-- 			<artifactId>tomcat-embed-websocket</artifactId> -->
@@ -46,11 +52,12 @@
 <!-- 			<artifactId>tomcat-embed-websocket</artifactId> -->
 <!-- 			<version>8.5.28</version> -->
 <!-- 		</dependency> -->
+
 		<!-- Use Jetty instead -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.springframework.boot</groupId> -->
-<!-- 			<artifactId>spring-boot-starter-jetty</artifactId> -->
-<!-- 		</dependency> -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jetty</artifactId>
+		</dependency>
 		<!-- User Undertow instead -->
 <!-- 		<dependency> -->
 <!-- 			<groupId>org.springframework.boot</groupId> -->
