@@ -35,9 +35,9 @@ public class TestController {
 			.put("a8", "aaaaaaaaaaaaaaaaaaaaaaaaaaaa")
 			.put("a9", "aaaaaaaaaaaaaaaaaaaaaaaaaaaa")
 			.build();
-	
+
 	@Autowired ObjectMapper objectMapper;
-	
+
 	@RequestMapping("/test200")
 	@ResponseStatus(code=HttpStatus.OK)
 	@ResponseBody
@@ -45,7 +45,7 @@ public class TestController {
 		int oldBufferSize = response.getBufferSize();
 		response.setBufferSize(8*1024); //8K
 		int newBufferSize = response.getBufferSize();
-		logger.info("response.bufferSize: {} => {}", oldBufferSize, newBufferSize);
+		logger.warn("response.bufferSize: {} => {}", oldBufferSize, newBufferSize);
 		return dummyBody;
 	}
 
@@ -55,28 +55,28 @@ public class TestController {
 	public Object get201() {
 		return dummyBody;
 	}
-	
+
 	@RequestMapping("/test400")
 	@ResponseStatus(code=HttpStatus.BAD_REQUEST)
 	@ResponseBody
 	public Object get400() {
 		return dummyBody;
 	}
-	
+
 	@RequestMapping("/test401")
 	@ResponseStatus(code=HttpStatus.UNAUTHORIZED)
 	@ResponseBody
 	public Object get401() {
 		return dummyBody;
 	}
-	
+
 	@RequestMapping("/test403")
 	@ResponseBody
 	@ResponseStatus(code=HttpStatus.FORBIDDEN)
 	public Object get403() {
 		return dummyBody;
 	}
-	
+
 	@RequestMapping("/test404")
 	@ResponseStatus(code=HttpStatus.NOT_FOUND)
 	@ResponseBody
@@ -90,7 +90,7 @@ public class TestController {
 	public Object get409() {
 		return dummyBody;
 	}
-	
+
 	@RequestMapping("/test500")
 	@ResponseStatus(code=HttpStatus.INTERNAL_SERVER_ERROR)
 	@ResponseBody
@@ -104,7 +104,7 @@ public class TestController {
 	public Object get503() {
 		return dummyBody;
 	}
-	
+
 	@RequestMapping("/close200")
 	@ResponseStatus(code=HttpStatus.OK)
 	@ResponseBody
@@ -122,6 +122,14 @@ public class TestController {
 		PrintWriter writer = response.getWriter();
 		writer.append(data).flush();
 	}
-	
-	
+
+	@RequestMapping("/close400")
+	@ResponseStatus(code=HttpStatus.BAD_REQUEST)
+	@ResponseBody
+	public Object close400(HttpServletResponse response) {
+		response.addHeader(HttpHeaders.CONNECTION, "close");
+		return dummyBody;
+	}
+
+
 }
