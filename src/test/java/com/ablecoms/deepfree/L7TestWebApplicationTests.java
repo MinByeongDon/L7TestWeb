@@ -41,7 +41,10 @@ public class L7TestWebApplicationTests {
 				//"test503",
 				//"close200",
 				//"close200Direct",
-				"close400");
+				"direct400KeepAliveCacheControl",
+				"direct400KeepAlive",
+				"direct400CacheControl",
+				"direct400");
 		apis.forEach(api->callApi(api));
 	}
 
@@ -49,7 +52,8 @@ public class L7TestWebApplicationTests {
 		try {
 			logger.debug("[{} TEST]=================================================", api);
 			RestTemplate rest = new RestTemplate(getClientHttpRequestFactory());
-			String response = rest.getForObject("http://localhost:8082/"+api, String.class);
+			//String response = rest.getForObject("http://localhost:8082/"+api, String.class);
+			String response = rest.getForObject("http://tapi.prepaidcard.co.kr/"+api, String.class);
 			logger.trace(response);
 		} catch (Exception e) {
 			logger.warn("{}: {}", e.getClass().getCanonicalName(), e.getMessage());
